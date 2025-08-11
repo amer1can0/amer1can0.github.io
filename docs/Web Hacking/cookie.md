@@ -1,7 +1,8 @@
 ---
 title: Cookie & Session
 layout: default
-nav_order: 2
+parent: Web Hacking
+nav_order: 2.1
 description: "Web hacking"
 ---
 
