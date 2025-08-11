@@ -2,7 +2,17 @@
 title: Home
 layout: home
 nav_order: 1
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "Main Page for Security Research Blog"
 permalink: /
 ---
+
+# Americano's Security Research Blog
+
+{: .warning }
+> CyberSecurity Research Blog로 본 블로그는 보안 관련 정보를 공유하는 것을 목적으로 합니다. 블로그에 게시된 내용을 악의적인 목적으로 사용하거나 타인에게 피해를 주는 행위는 엄격히 금지 됩니다. 이러한 모든 불법적 행위 및 그로 인해 발생하는 모든 책임은 전적으로 행위자 본인에게 있습니다. 블로그 운영자는 어떠한 책임도 지지 않음을 알려드립니다.
+
+Americano's Security Research Wiki 페이지 입니다. 오팬시브 보안의 마인드로 보안을 연구하는것을 목표로 합니다.
+
+## About this Project
+해당 블로그의 저작권은 `Americano`에게 있습니다. 
 
