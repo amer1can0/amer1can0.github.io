@@ -6,6 +6,15 @@ nav_order: 2.1
 description: "Web hacking"
 ---
 
+{: .no_toc }
+
+## Table of Contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+
 웹 해킹의 기본 요소인 쿠키 (Cookie) 와 세션 (Session)을 알아가보자 합니다. 두 요소는 웹사이트를 인증하는 역할을 하거나 유저의 정보를 서버로 전달하는 역할을 합니다.
 
 # Cookie (쿠키)
