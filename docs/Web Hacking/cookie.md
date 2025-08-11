@@ -6,6 +6,8 @@ nav_order: 2.1
 description: "Web hacking"
 ---
 
+웹 해킹의 기본 요소인 쿠키 (Cookie) 와 세션 (Session)을 알아가보자 합니다. 두 요소는 웹사이트를 인증하는 역할을 하거나 유저의 정보를 서버로 전달하는 역할을 합니다.
+
 # Cookie (쿠키)
 - HTTP 통신은 Connectionless 와 Stateless 로 이루어진 통신을 이야기 합니다. 그러므로 서버는 클라이언트를 통신마다 기억할 수 없습니다.
 - Cookie는 위 와 같은 이유로 HTTP 통신 상태를 유지하기 위해 만들어졌습니다. 
