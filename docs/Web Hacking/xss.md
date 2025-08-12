@@ -82,7 +82,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > ``` 
 > https://<website>?url=[The script under] 
 >```
-> [The script under]:
+> **[The script under]**:
 >```js
 > <script>
 >   var xhr = new XMLHttpRequest();
