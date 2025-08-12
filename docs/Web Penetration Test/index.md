@@ -1,5 +1,5 @@
 ---
-title: Web Hacking
+title: Web Penetration Test
 nav_order: 2
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: XSS (Cross-Site Scripting)
 layout: default
-parent: Web Hacking
+parent: Web Penetration Test
 nav_order: 2.3
 description: "Web hacking"
 ---

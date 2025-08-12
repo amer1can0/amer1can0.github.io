@@ -1,7 +1,7 @@
 ---
 title: HTTP Security Headers
 layout: default
-parent: Web Hacking
+parent: Web Penetration Test
 nav_order: 2.2
 description: "Web hacking"
 ---

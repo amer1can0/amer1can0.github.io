@@ -1,9 +1,9 @@
 ---
 title: Cookie & Session
 layout: default
-parent: Web Hacking
+parent: Web Penetration Test
 nav_order: 2.1
-description: "Web hacking"
+description: "Web Pentest"
 ---
 
 # Cookie & Session (쿠키와 세션)

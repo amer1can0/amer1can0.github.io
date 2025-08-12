@@ -7,6 +7,12 @@ layout: default
 
 수정사항들은 아래 리스트들로 만들어 집니다.
 
+
+## Release v0.2 - 2025.08.12
+
+- Added XSS contents
+- Fixed General Structure of the site
+
 ## Release v0.1 - 2025.08.11
 
 New release
