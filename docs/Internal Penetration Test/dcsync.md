@@ -16,11 +16,14 @@ description: "Internal Pentest"
 1. TOC
 {:toc}
 
+MITRE ATT&CK: T1003.006
+{: .label .label-green }
+
 DCSync는 공격자가 Active Directory (AD)의 도메인 컨트롤러 (DC: Domain Controller)로 위장하여 다른 Domain Controller로 부터 사용자 계정의 비밀번호 해시를 복제 시키는 공격 기법입니다. 
 
 쉽게 말해 Active Directory의 정상적인 복제기능 (Replication)을 악용하는 것이라고 보면 됩니다.
 
-## The principle of DCSync (DCSync의 원리)
+## The Principle of DCSync (DCSync의 원리)
 
 AD 환경에서 여러 개의 DC가 존재하는 경우, 모든 DC의 데이터가 항상 동기화되도록 복제 프로세스가 주기적으로 실행됩니다. DCSync 공격은 해당 복제 과정을 악용하는것을 의미합니다.
 
