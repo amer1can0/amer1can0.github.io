@@ -8,6 +8,15 @@ description: "Web hacking"
 
 # Cross Site Scripting (XSS)
 
+{: .no_toc }
+
+## Table of Contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+
 XSS는 웹사이트에 악성 스크립트 `<script>` 태그나 HTML의 `on` 태그 속성을 이용해서 클라이언트 측 브라우저에서 실행되도록 하는 공격입니다.
 
 XSS의 공격은 크게 3가지 유형으로 나뉩니다.
