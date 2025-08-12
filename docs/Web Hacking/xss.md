@@ -16,7 +16,9 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 - 공격자가 악성스크립트가 포함된 URL을 Victim에게 보내는 형식으로 이루어집니다.
 
 {: .important-title }
+> CODE
 > Proof of Concept
+> {: .label .label-blue }
 > ```js 
 > https://donotexistwebsitedontclickit.com?url=<script>alert("XSS")</script> 
 >```
