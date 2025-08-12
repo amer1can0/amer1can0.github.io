@@ -57,3 +57,29 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > 1. DOM-based XSS 공격은 네트워크에서 서버에게 별도 요청없이 URL 주소 해시에 심은 악성 스크립트가 실행이 됩니다.
 > 2. Reflected XSS 공격은 악성 스크립트가 일단 서버에 전달이 되어야합니다. 
 
+## XSS Impact 
+- 사용자 권한을 탈취할 수 있습니다. (Impersonate User).
+- 사용자 데이터를 읽거나 쓸수 있습니다. (Read and Write data that user is accessible).
+- 사용자의 로그인 계정을 탈취할 수 있습니다. (Capture Login creds).
+- 악성코드 삽입 (Inject Trojan).
+- 웹사이트 UI변경 (Virtual Defacement).
+
+## XSS Attack Chain
+- Steal Cookie (쿠키를 탈취할 수 있습니다)
+
+{: .important-title }
+> Proof of Concept
+> {: .label .label-blue }
+> 쿠키를 팝업창에 띄우기
+> ``` 
+> https://donotexistwebsitedontclickit.com?url=<script>alert(document.cookie)</script> 
+>```
+
+- Capture Password (로그인 크레덴셜 탈취)
+- Bypass CSRFToken (CSRF 토큰을 우회할 수 있습니다)
+
+## Remediation
+
+- **입력값 검증**: 사용자로부터 입력받는 모든 데이터에 대해 `< > " ' & javascript on` 같은 특수문자나 스크립트를 필터링 또는 이스케이핑 처리를 해야 됩니다. Whitelist 방식을 쓰는것이 가장 바람직 합니다.
+- **출력 인코딩**: 서버에서 브라우저로 데이터를 보낼 때, 스크립트가 실행되지 않도록 HTML Entity로 변환해야 합니다.
+- **보안 헤더 설정 (CSP)**: Content-Security-Policy (CSP) 같은 보안 정책을 사용해 어떤 스크립트를 실행할지 미리 정의합니다.
