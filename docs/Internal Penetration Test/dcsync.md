@@ -1,12 +1,12 @@
 ---
-title: DCSync (Fixed Required)
+title: DCSync
 layout: default
 parent: Internal Penetration Test
 nav_order: 4.1
 description: "Internal Pentest"
 ---
 
-# DCSync
+# DCSync 공격
 
 {: .no_toc }
 
@@ -52,6 +52,14 @@ AD 환경에서 여러 개의 DC가 존재하는 경우, 모든 DC의 데이터�
 {: .warning }
 > `/user:` 란에 `domain.com`이 아닌 `domain`을 써야될때가 있습니다.
 
+
+## Detection of the Attack (공격 탐지)
+
+DCSync 공격을 탐지하기 위해서는 네트워크 모니터링, Windows Event를 체크하는것이 필요합니다.
+
+`EventID 4462` 이 Windows 이벤트 로그에서 나오면 `{1131f6ad-9c07-11d1-f79f-00c04fc2dcd2}` 의 GUID를 필터링 하여서 어떠한 유저가 `Replication Directory Changes All`을 사용했는지 찾으면 됩니다.
+
 ## References
 
 1. https://medium.com/@urshilaravindran/ad-series-dc-sync-attacks-e76bb54308f5
+2. https://velog.io/@penclicker/DCSync%EB%A5%BC-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90
