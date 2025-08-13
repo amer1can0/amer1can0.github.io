@@ -7,14 +7,20 @@ layout: default
 
 수정사항들은 아래 리스트들로 만들어 집니다.
 
-
-## Release v0.2 - 2025.08.12
+## Release v0.3 - 2025.08.13
 
 New release
 {: .label .label-purple }
 
+- Added CSRF contents
+- Fixed General Structure of the site
+- Modified some content for internal DCSync content
+
+## Release v0.2 - 2025.08.12
+
 - Added XSS contents
 - Fixed General Structure of the site
+- Added Internal contents
 
 ## Release v0.1 - 2025.08.11
 
