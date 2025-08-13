@@ -26,3 +26,6 @@ CSRF 공격을 성공적으로 실행시키려면 다음과 같은 조건이 필
 1. **A relevant action**: 공격자가 해당 공격을 실행시킬려는 의도와 유도가 필요합니다. 
 2. **Cookie-based session handling**: 해당 웹 어플리케이션이 쿠키기반의 세션 핸들링을 하여아합니다. (쿠키 탈취후 해당유저의 권한으로 인증이 가능하기 때문입니다.)
 3. **No unpredictable request parameters**: 예측할수없는 패러미터가 요청에 들어가지 않아야합니다. HTTP 요청에 예측되지않는 패러미터값이 들어갈 경우, 공격자는 이것을 예측하기 힘들게 되어 공격을 할수 없게됩니다.
+
+## References
+1. https://medium.com/infosecmatrix/mastering-csrf-a-comprehensive-guide-to-finding-cross-site-request-forgery-vulnerabilities-2024-8d1d13d83547
