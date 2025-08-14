@@ -51,6 +51,22 @@ FCC란  Federal Communications Comissions Identification (FCC ID)의 약자로 �
 
 UART 통신은 Universal Asynchronous Receiver Transmitter의 약자이며, PC와 IoT기기 간의 송수신 역할을 담당합니다. 해당 UART통신을 이용해서 사용자의 컴퓨터와 IoT기기를 연결할 경우, 터미널로 접속이 가능합니다. 
 
+### What is UART (UART란 무엇인가)
+
+대부분의 임베디드나 IoT 기기들은 `Serial Console`을 다양한 목적으로 가지고 있습니다. 해당 콘솔은 제조과정에서 쓰이거나, 해당 기기를 디버깅 할때, 등 다양한 목적과 용도로 쓰이고 있습니다.
+
+우리가 UART로 통신을 할수 있다면 `Root Shell`을 접근할수도 있습니다. 
+- 해당 쉘을 접근할 경우, 손쉽게 해당 기기를 탐색해볼수 있습니다.
+- 펌웨어나, 파일 시스템 내용들을 받아볼 수 있습니다.
+- 암호화된 메모리 접근 권한이나 부트로더를 공략할 수 있습니다.
+
+하지만 대부분의 스마트 기기 제조사들은 이러한 무분별한 접근이나 공격을 막기 위해서 `Secret Key`나 `Password`로 접근을 제한하는 경우가 대부분 입니다. 혹은 `Read Only Console` 같은 읽기만 가능한 콘솔을 만들어서 애초에 접근을 못하게 하는 부분도 있습니다.
+
+이러한 제한적인 부분에도 모의해킹을 진행할때, `Root Shell`의 접근권한을 얻으면 좋은것은 다양한 정보를 `Read Only Console`이나 비밀번호 접근제한이 걸려있는 상황에서도 얻을수 있기 때문입니다.
+
+- Boot Log에서 얻을 수 있는 소프트웨어 및 하드웨어 정보들
+- Crash Log에서 얻을 수 있는 소프트웨어 및 하드웨어 정보들 
+
 ### How to find UART (UART를 찾는법)
 1. 구글링으로 알아낼수 있습니다.
 2. PCB보드에 써져있을수 있습니다 (`RX`,`TX`,`GND`,`VCC`)
@@ -61,7 +77,34 @@ UART 통신은 Universal Asynchronous Receiver Transmitter의 약자이며, PC�
 
 {: .highlight }
 `GND`, `TX`, `RX` 같은 핀들을 찾을때, 주로 4핀이나 3핀이 있는 핀을 찾으면 됩니다.
+`VCC`같은 경우 보통 무시해도 상관은 없습니다. 
 
+| Device1   | Connection    | PC        |
+|:----------|:--------------|:----------|
+|`TX`       | `->`          |   `RX`    |
+|`RX`       | `<-`          |   `TX`    |
+|`GND`      | `<->`         |   `GND`   |
+
+PCB에도 여러가지의 연결 방법이 있습니다.
+
+1. PCB보드에 구멍이 있는경우
+    - 납땜을 하거나 (Soldering) 혹은 Articulated Arms를 사용해서 연결을 할 수 있습니다.
+2. PCB보드에 골드핑거 가 있는경우
+    - Edge Connector가 필요합니다.
+
+### Multimeter로 UART PIN 찾는 방법
+
+1. `GND`핀을 찾기 위해서는 멀티미터기를 `Continuity Mode`로 만든 다음 2개의 포인터를 하나는 철판쪽, 하나는 PIN 자리들을 번갈아가며 "삡" 울리는 소리를 들으면 됩니다.
+2. `VCC`핀을 찾기 위해서는 기기의 전원을 키고 PIN자리들을 번갈아가면서 `3.3` voltage가 뜨는곳을 찾으면 됩니다.
+3. `RX` 핀을 찾기 위해서는 기기의 전원을 켜고 `0` voltage가 뜨는곳을 찾으면 됩니다.
+4. `TX` 핀을 찾기 위해서는 여러 변화하는 숫자들을 나타내는 핀을 찾으면 됩니다.
+
+
+### Possible ways to gain access to Root Shell
+
+- Brute Forcing 공격으로 해당 쉘의 비밀번호를 무차별 대입해볼 수 있습니다. (다만 무차별 대입 공격으로 인해 접근제한이 걸리지 않게 조심해야 될것입니다.)
+- Firmware를 덤프해서 시리얼 콘솔의 제한적 쉘을 얻을수 있습니다. (다만 펌웨어를 덤핑할때는 복사본이 있거나 기존 데이터가 손상되지 않도록 조심해야 될것입니다.)
+- 해당 기기와 UART 통신을 할 경우 `mimicom` 혹은 `screen`으로 연결을 하면 됩니다.
 
 
 ## References
