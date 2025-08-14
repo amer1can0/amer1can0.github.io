@@ -92,7 +92,7 @@ PCB에도 여러가지의 연결 방법이 있습니다.
 2. PCB보드에 골드핑거 가 있는경우
     - Edge Connector가 필요합니다.
 
-### Multimeter로 UART PIN 찾는 방법
+### Using Multimeter to find UART PIN (Multimeter로 UART PIN 찾는 방법)
 
 1. `GND`핀을 찾기 위해서는 멀티미터기를 `Continuity Mode`로 만든 다음 2개의 포인터를 하나는 철판쪽, 하나는 PIN 자리들을 번갈아가며 "삡" 울리는 소리를 들으면 됩니다.
 2. `VCC`핀을 찾기 위해서는 기기의 전원을 키고 PIN자리들을 번갈아가면서 `3.3` voltage가 뜨는곳을 찾으면 됩니다.
@@ -100,7 +100,7 @@ PCB에도 여러가지의 연결 방법이 있습니다.
 4. `TX` 핀을 찾기 위해서는 여러 변화하는 숫자들을 나타내는 핀을 찾으면 됩니다.
 
 
-### Possible ways to gain access to Root Shell
+### Possible ways to gain access to Root Shell (UART통신으로 Root Shell 접근방법)
 
 - Brute Forcing 공격으로 해당 쉘의 비밀번호를 무차별 대입해볼 수 있습니다. (다만 무차별 대입 공격으로 인해 접근제한이 걸리지 않게 조심해야 될것입니다.)
 - Firmware를 덤프해서 시리얼 콘솔의 제한적 쉘을 얻을수 있습니다. (다만 펌웨어를 덤핑할때는 복사본이 있거나 기존 데이터가 손상되지 않도록 조심해야 될것입니다.)
