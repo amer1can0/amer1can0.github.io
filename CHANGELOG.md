@@ -7,10 +7,16 @@ layout: default
 
 수정사항들은 아래 리스트들로 만들어 집니다.
 
-## Release v0.3 - 2025.08.13
+## Release v0.4 - 2025.08.18
 
 New release
 {: .label .label-purple }
+
+- Broken Access Control added
+- File Upload Vulnerabilities added
+
+
+## Release v0.3 - 2025.08.13
 
 - Added CSRF contents
 - Fixed General Structure of the site
