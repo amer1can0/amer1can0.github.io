@@ -24,25 +24,25 @@ API란 Application Programming Interface를 의미합니다. 해당 기능은 �
 
 ## OWASP Top 10 API Security Risks - 2023 (2023년도 API 보안위협 탑 10)
 
-1. Broken Object Level Authorization (객체 수준 권한 오류)
+1. **Broken Object Level Authorization (객체 수준 권한 오류)**
     - API가 객체 식별자(ID) 기반으로 데이터를 처리할때, 해당 객체에 접근할 권한이 있는지 제대로 검사하지 않으면 다른 사용자의 데이터에 접근하거나 조작할수 있는 취약점입니다. (IDOR)
-2. Broken Authentication (인증 오류)
+2. **Broken Authentication (인증 오류)**
     - 인증 메커니즘이 잘못 되었을 경우, 공격자가 인증 토큰을 탈취하거나 인증을 우회해 다른 사용자로 가장할 수 있습니다.
-3. Broken Object Property Level Authorization (객체 속성 수준 권한 오류)
+3. **Broken Object Property Level Authorization (객체 속성 수준 권한 오류)**
     - 과도한 데이터 노출 (Excessive Data Exposure)이나 Massive Assignment가 관련된 취약점 입니다. 객체 전체가 아닌 특정 속성 하나에 대한 접근 권한까지 제대로 검증을 안해서 민감한 정보가 노출되거나 변경될수 있습니다.
-4. Unrestricted Resource Consumption (자원 무제한 소비)
+4. **Unrestricted Resource Consumption (자원 무제한 소비)**
     - 요청량이나 데이터 크키에 제한이 없으면, DoS를 만들수 있습니다. 공격자가 API를 통해 시스템 자원이나 외부 리소스를 무제한 호출할 수 있는 경우를 이야기 합니다.
-5. Broken Function Level Authorization (기능 수준 권한 오류)
+5. **Broken Function Level Authorization (기능 수준 권한 오류)**
     - 사용자와 관리자 등 기능 간 권한 경계가 명확하지 않거나 접근 제어가 제대로 적용되지 않는 경우, 공격자가 관리자 기능에 접근하거나 다른 사용자의 리소스를 조작하는 것을 말합니다.
-6. Unrestricted Access to Sensitive Business Flows (민감한 비지니스 정보에 대한 접근)
+6. **Unrestricted Access to Sensitive Business Flows (민감한 비지니스 정보에 대한 접근)**
     - 댓글 게시 같은 민감한 비지니스 프로세스가 자동화된 방식으로 남용될때 충분히 보호하지 않으면 비지니스에 큰 피해가 발생할수 있습니다. (가짜 계정 생성)
-7. Server Side Request Forgery (SSRF)
+7. **Server Side Request Forgery (SSRF)**
     - 사용자가 제공한 URI를 검증없이 서버가 원격 리소스를 요청할 경우, 공격자가 방화벽이나 VPN 뒤 내부 시스템에 접근이 가능합니다.
-8. Security Misconfiguration (보안 설정 오류)
+8. **Security Misconfiguration (보안 설정 오류)**
     - API 또는 관련 시스템 환경이 잘못 설정되어 있을 경우 (예: 허용되지 않는 메소드, 잘못된 CORS 설정 등), 예상치 못한 보안 취약점이 발생할 수 있습니다. 
-9. Improper Inventory Management (부적절한 엔드포인트 관리)
+9. **Improper Inventory Management (부적절한 엔드포인트 관리)**
     - API 엔드포인트 수가 많아지면 문서화*관리되지 않는 엔드포인트 (구 버전, 디버그용 등)가 노출되어 잠재적 공격 위험이 커집니다.
-10. Unsafe Consumption of APIs (API의 불안전한 소비)
+10. **Unsafe Consumption of APIs (API의 불안전한 소비)**
     - 서드파티 API에서 받은 데이터를 일반 사용자 입력보다 더 신뢰해서 보안 검증을 소흘이 할 경우, 보안 허점이 발생할 수 있습니다. 
 
 ## Discovering API documentation (API 문서 찾기)
@@ -100,7 +100,7 @@ Mass Assignment을 이용하여 숨겨진 패러미터를 발견할수 있습니
 ```
 해당 정보를 이용하여 숨겨진 패러미터들을 이용하고 공격해 볼수 있습니다.
 
-```JSON
+```json
 {
     "username": "hi",
     "email": "admin@admin",
