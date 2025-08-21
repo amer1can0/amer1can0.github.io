@@ -112,9 +112,9 @@ LoadModule php_module /usr/lib/apache2/modules/libphp.so
 
 ### web.config RCE
 
-**Proof of Concept:**
+Proof of Concept:
 
-```asp.net
+```html
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
    <system.webServer>
