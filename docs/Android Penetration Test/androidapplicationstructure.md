@@ -69,5 +69,27 @@ description: "Mobile hacking"
 3. Broadcast receivers - 다른 앱들에서부터 정보를 가져오는 역할을 담당합니다.
 4. Content providers - SQLite 데이터 베이스랑 통신을 하거나 비슷한 역할을 합니다. 
 
-## Android APplication Structure
+## IPC (Inter-Process Communication)
+
+IPC란 Inter-Process Communication을 의미하며, 안전하게 데이터를 어플리케이션이나 샌드박스들 사이에서 주고받는것을 의미합니다. 
+
+미들웨어 (Middleware) 를 의미하며 바인더 프레임 워크를 사용합니다. 
+
+안드로이드 앱들은 다 각기 다른 Manifest 파일이나, Activity를 가지고 있기때문에 통신을 `Intent`라는 것을 활용하여 서로 어떠한 action을 다른 App component나 다른 App에 요청을 합니다.
+
+{: .highlight }
+쉽게 말해서 `Activity`는 안드로이드 앱의 Major Block을 이야기하고, `Intent`는 `Activity`들의 사이간의 Communication을 담당합니다. 허나 다른 `App`들간의 통신도 가능합니다. 
+
+Manifest 파일에서는 Activity들도 define이 되지만 Intent filter도 Manifest안에서 정의가 됩니다, 해당 Intent Filter에서는 어떤 엑티비티가 뭘 할수 있는지 정의를 합니다.
+
+```
+<activity android:name=".MainActivity">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+```
+
+위의 예시 코드를 보면 `MainActivity`에 `MAIN` 메소드를 쓸수있고, `LAUNCHER`라는 메소드를 쓸수있다는것을 알수 있습니다.
 
