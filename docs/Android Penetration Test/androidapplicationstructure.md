@@ -52,7 +52,7 @@ description: "Mobile hacking"
 
 패키징 압축을 해제하면 다양한 폴더들을 볼 수 있는데, `Manifest`파일이나, `lib` 폴더 (라이브러리 폴더) 와 같은 다양한 폴더들을 볼 수 있습니다.
 
-### Manifest files
+## Manifest files
 
 안드로이드의 Manifest 파일은 다음과 같이 구성이 되어있습니다.
 
@@ -60,11 +60,14 @@ description: "Mobile hacking"
 2. Permissions - 해당 어플리케이션이 어떠한 퍼미션이 필요한지 (예를들어 External API가 필요하다 하면 인터넷 Permission이 있어야 될것 입니다.)
 3. Flags
 
-### App components
+## App components
 
 안드로이드의 App components는 다음과 같이 구성이 되어있습니다.
 
 1. Activities - Main Activity로 시작화면을 정할수 있습니다. 다른 엑티비티에서 여러가지의 메소드를 정의를 하고 어떻게 실행할것인지 정의 할수 있습니다.
-2. Services - 백그라운드에서 돌아가는 프로세스지만 앱 구성중 하나인 것을ㄴ 말합니다.
+2. Services - 백그라운드에서 돌아가는 프로세스지만 앱 구성중 하나인 것을 말합니다.
 3. Broadcast receivers - 다른 앱들에서부터 정보를 가져오는 역할을 담당합니다.
 4. Content providers - SQLite 데이터 베이스랑 통신을 하거나 비슷한 역할을 합니다. 
+
+## Android APplication Structure
+
