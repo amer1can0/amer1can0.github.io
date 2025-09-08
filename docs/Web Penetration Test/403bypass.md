@@ -1,5 +1,5 @@
 ---
-title: Security Misconfiguration
+title: 403 Bypass
 layout: default
 parent: Web Penetration Test
 nav_order: 2.7
