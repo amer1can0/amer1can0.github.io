@@ -1,5 +1,5 @@
 ---
-title: 
+title: Enumeration
 nav_order: 1
 parent: Windows Privilege Escalation
 grand_parent: Internal Penetration Test
