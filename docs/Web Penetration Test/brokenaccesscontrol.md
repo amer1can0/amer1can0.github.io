@@ -53,7 +53,7 @@ Horizontal Access Control (수평 접근제어)란 다른유저의 대한 리소
 
 ```
 # 관리자 기능을 아무런 인증없이 사용할 수 있나
-https://<victim>/admin
+localhost/admin
 ```
 
 ```
@@ -78,8 +78,8 @@ URI의 파라미터로 접근제어를 할 경우, 앞서 말했듯이 세션토
 예를 들어 다음과 같습니다.
 
 ```
-https://<victim>/dashboard?admin=true
-https://<victim>/page/1?role=1
+localhost/dashboard?admin=true
+localhost/page/1?role=1
 ```
 
 또한 이러한 취약점은 Authentication을 할때도 문제가 될수 있습니다. 이러한 경우 redirection에서 인증이 제대로 안이뤄지는 경우 일수도 있습니다.
@@ -90,8 +90,8 @@ https://<victim>/page/1?role=1
 2. 서버측의 잘못 된 설정: `admin=true`라는 파라미터만 인식하고 권한을 부여하도록 설계
 
 ```
-https://<victim>/login/home?admin=true
-https://<victim>/login/home?role=1
+localhost/login/home?admin=true
+localhost/login/home?role=1
 ```
 
 {: highlight}
@@ -114,8 +114,8 @@ IDOR 취약점은 Horizontal Broken Access Control이 될수도 있고, Vertical
 이러한 취약점은 사용자가 컨트롤이 가능한 파라미터를 수정하여 접근이 허용되지 않는 정보나 기능을 사용하는 것을 이야기 합니다.
 
 ```
-https://<victim>/myaccount?id=123
-https://<victim>/myaccount?id=124
+localhost/myaccount?id=123
+localhost/myaccount?id=124
 ```
 
 

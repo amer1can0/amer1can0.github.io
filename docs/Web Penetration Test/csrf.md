@@ -34,14 +34,14 @@ CSRF 공격을 성공적으로 실행시키려면 다음과 같은 조건이 필
 SOP (Same Origin Policy)가 존재 안할경우, 공격자 도메인에서 해당 도메인의 HTTP Path를 안다면 아래와 같은 스크립트를 추가 할수 있습니다. (`/change-email`의 Path를 알경우)
 
 ```
-<form method="POST" action="https://<victimsite>/myaccount/change-email"> <input type="hidden" name="email" value="attacker@email"> </form> <script> document.forms[0].submit();</script>
+<form method="POST" action="http://localhost/myaccount/change-email"> <input type="hidden" name="email" value="attacker@email"> </form> <script> document.forms[0].submit();</script>
 ```
 ### Existence of Same Origin Policy (SOP가 존재할 경우)
 
 SOP가 존재할경우, HTML태그나, 다양한 XSS, 다양한 공격과 함께 공격 시도를 해볼 수 있습니다. (아래의 예시는 `HTTP Interchange` 취약점이 가능할때 예시입니다.)
 
 ```
-<img src="https://victim/myaccount/change-email?email=attacker@attacker">
+<img src="http://localhost/myaccount/change-email?email=attacker@attacker">
 ```
 
 ## Mitigation

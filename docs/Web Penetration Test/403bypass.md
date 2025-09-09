@@ -60,15 +60,15 @@ HTTP 헤더는 여러가지 커스텀 헤더들이 존재합니다. 다양한 WA
     X-Client-IP: 127.0.0.1
     X-Real-IP: 127.0.0.1
     X-True-IP: 127.0.0.1
-    Redirect: http://localhost
-    Referer: http://localhost
+    Redirect: localhost
+    Referer: localhost
     Host: localhost
 ```
 
 Curl로도 해당 여러 취약점을 테스트 해볼 수 있습니다.
 
 ```js
-curl -i -k -H "X-Forwarded: 127.0.0.1" https://example.com
+curl -i -k -H "X-Forwarded: 127.0.0.1" <URL>
 ```
 
 ### Bypassing path-base blocking

