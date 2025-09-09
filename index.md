@@ -13,6 +13,8 @@ permalink: /
 
 Americano's Security Research Wiki 페이지 입니다. 오팬시브 보안의 마인드로 보안을 연구하는것을 목표로 합니다.
 
+해당 프로젝트는 비상업 용도이며 모든 프로젝트의 내용들은 이미 다른 보안 연구자 분들이 발표한 내용들로 이루어져 있으며 실제 공격에는 쓰일수 없는 PoC (Proof of Concept) 입니다. 
+
 ## About this Project
 해당 블로그의 저작권은 `Americano`에게 있습니다. 
 
