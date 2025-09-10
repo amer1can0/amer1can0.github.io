@@ -19,12 +19,14 @@ whoami
 ```
 
 2. 현재 유저의 권한 검색
+
 ```
 whoami /priv
 whoami /group
 ```
 
 3. 해당 호스트에 존재하는 유저들 검색
+
 ```
 net user
 whoami /all
@@ -33,17 +35,20 @@ Get-ChildItem C:\Users -Force | select Name
 ```
 
 4. 해당 유저의 정보 검색
+
 ```
 net user <username>
 ```
 
 5. Local 환경의 그룹을 리스트 하고 싶을 경우
+
 ```
 net localgroup
 Get-LocalGroup | ft Name
 ```
 
 6. Local 그룹의 디테일 정보 검색
+
 ```
 net localgroup <localgroup>
 Get-LocalGroupMember <localgroup> | ft Name, PrincipalSource
